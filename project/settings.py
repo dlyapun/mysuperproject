@@ -7,12 +7,12 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'gn9h&f26i%0)if$&^a7yx%fn$m!9=8%rc=b$ujnyjjon$ood3_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*', ]
 INTERNAL_IPS = ['127.0.0.1', ]
 
 SITE_URL = 'http://127.0.0.1:8000'
-SITE_NAME = 'Django site'
+SITE_NAME = 'Django NEW FEATURE'
 NO_REPLY_EMAIL_ADDRESS = 'no-reply@example.com'
 ADMIN_EMAIL_ADDRESS = 'admin@example.com'
 SUPPORT_EMAIL_ADDRESS = 'support@example.com'
