@@ -9,6 +9,7 @@ class MySuperModel(models.Model):
     name = models.CharField(max_length=300, null=True, blank=True)
     title = models.CharField(max_length=300, null=True, blank=True)
     first_name = models.CharField(max_length=300, null=True, blank=True)
+    last_name = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return 'MySuperModel'
