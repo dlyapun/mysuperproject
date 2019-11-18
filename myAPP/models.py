@@ -8,6 +8,7 @@ class MySuperModel(models.Model):
     changed = models.BooleanField(default=False)
     name = models.CharField(max_length=300, null=True, blank=True)
     title = models.CharField(max_length=300, null=True, blank=True)
+    first_name = models.CharField(max_length=300, null=True, blank=True)
 
     def __str__(self):
         return 'MySuperModel'
