@@ -1,0 +1,36 @@
+Content-Type: multipart/alternative;
+ boundary="===============3857657261942434829=="
+MIME-Version: 1.0
+Subject: Confirm Registration
+From: no-reply@example.com
+To: test2@gmail.com
+Date: Tue, 05 Nov 2019 11:39:42 -0000
+Message-ID: <157295398247.76693.10669756884264138437@mbp-macbook.lan>
+
+--===============3857657261942434829==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<body>
+    <html>
+    <div>
+        <h2>Hi, test2@gmail.com! To complete registration, please follow <a href="http://127.0.0.1:8000/accounts/confirm-registration/token=d1729f709f9b45d3a4251da93db8412808b020ccef004ca7a08e7c6bf107c8d9">this</a> link!</h2>
+    </div>
+    </html>
+</body>
+--===============3857657261942434829==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+
+<body>
+    <html>
+    <div>
+        <h2>Hi, test2@gmail.com! To complete registration, please follow <a href="http://127.0.0.1:8000/accounts/confirm-registration/token=d1729f709f9b45d3a4251da93db8412808b020ccef004ca7a08e7c6bf107c8d9">this</a> link!</h2>
+    </div>
+    </html>
+</body>
+--===============3857657261942434829==--
+
+-------------------------------------------------------------------------------
