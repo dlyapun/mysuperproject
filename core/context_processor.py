@@ -1,8 +1,9 @@
 # coding=utf-8
 from django.conf import settings
-
+from myAPP.models import Pizza
 
 def contex_core(request):
     return {'site_url': settings.SITE_URL,
             'site_name': settings.SITE_NAME,
+            'pizzas': Pizza.objects.all(),
             'support_email_address': settings.SUPPORT_EMAIL_ADDRESS,}

@@ -1,1 +1,34 @@
-test
+
+<h1>PizzaWorld</h1>
+<div>
+    {% for pizza in pizzas %}
+    <div>
+        <p>{{ pizza.name }}, цена: {{ pizza.price }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div>
+    <h2>Сортировка</h2>
+    <a href="/pizzas/?ordering=name">По имени </a><br>
+    <a href="/pizzas/?ordering=price">По цене +</a><br>
+    <a href="/pizzas/?ordering=-price">По цене -</a><br>
+</div>
+
+<hr>
+<form method="post" action="/pizzas/">{% csrf_token %}
+    <input type="text" name="ordering">
+    <input type="submit" value="Сортировать по">
+</form>
+
+<hr>
+
+<form method="post" action="/add_pizza/">{% csrf_token %}
+    <select name="pizza_id">
+        {% for pizza in pizzas %}
+            <option value="{{pizza.id}}">{{pizza.name}}</option>
+        {% endfor %}
+    </select>
+    <input type="number" name="count">
+    <input type="submit" value="Добавить в корзину">
+</form>
