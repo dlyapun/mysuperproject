@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}New York Pizza{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="starter-template">
+        <div>
+            <h2>Сортировка</h2>
+            <a href="/pizzas/?ordering=name">По имени </a> | 
+            <a href="/pizzas/?ordering=price">По цене +</a> | 
+            <a href="/pizzas/?ordering=-price">По цене -</a>
+        </div>
+        <div class="row">
+            {% for pizza in pizzas %}
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="{{ pizza.image.url }}" alt="...">
+                    <div class="caption">
+                        <h3>Пицца {{ pizza.name }}</h3>
+                        <p>Прекрасная пицца {{ pizza.name }} по цене: {{ pizza.price }}</p>
+                        <p>
+                            <form method="post" action="/add_pizza/" class="form-inline">{% csrf_token %}
+                                <input type="number"  name="pizza_id" value="{{ pizza.id }}" hidden>
+                                <div class="form-group">
+                                    <input type="number" style="width: 60px;" class="form-control" name="count" value="1">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

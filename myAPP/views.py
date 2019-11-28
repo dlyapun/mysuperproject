@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import FormView
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 from django import forms
 from myAPP.models import *
 
@@ -10,7 +10,7 @@ class PizzaForm(forms.Form):
 
 
 class CoreTemplateView(TemplateView):
-    template_name = 'core.html'
+    template_name = 'list.html'
     sorting_fields = ['price', 'name', '-price', '-name']
 
     def get_context_data(self, *args, **kwargs):
@@ -28,6 +28,8 @@ class CoreTemplateView(TemplateView):
         context = self.get_context_data(**kwargs)
         return render(request, self.template_name, context)
 
+class CartView(TemplateView):
+    template_name = 'cart.html'
 
 class AddPizzaView(FormView):
     template_name = 'contact.html'
@@ -38,5 +40,13 @@ class AddPizzaView(FormView):
         print('form.cleaned_data:', form.cleaned_data)
         pizza = Pizza.objects.get(id=form.cleaned_data.get('pizza_id'))
         count = form.cleaned_data.get('count')
-        pizza.create_order(count)
+        instance_pizza = pizza.create_instance_pizza(count)
+        order, created = Order.objects.get_or_create(user=self.request.user, full_price=0)
+        order.pizzas.add(instance_pizza)
         return super().form_valid(form)
+
+class DeletePizzaView(View):
+
+    def post(self, request, *args, **kwargs):
+        InstancePizza.objects.filter(id=request.POST.get('pizza_id')).delete()
+        return redirect('/cart/')

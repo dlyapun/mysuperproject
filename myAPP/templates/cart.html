@@ -1,0 +1,35 @@
+
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}Index page{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="starter-template" style="min-height: 360px;">
+        <div class="row">
+            <h3>Мой заказ: {{ order.get_full_price }} $</h3>
+            {% for pizza in order.pizzas.all %}
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="{{ pizza.pizza_template.image.url }}" alt="...">
+                    <div class="caption">
+                        <h3>Пицца {{ pizza.name }}</h3>
+                        <p>Прекрасная пицца {{ pizza.name }} по цене: {{ pizza.price }}</p>
+                        <p>Количество: <strong>{{ pizza.count }}</strong></p>
+                        <p>
+                        <form method="post" action="/delete_pizza/" class="form-inline">{% csrf_token %}
+                            <input type="number"  name="pizza_id" value="{{ pizza.id }}" hidden>
+                            <button type="submit" class="btn btn-danger">Удалить с корзины</button>
+                        </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Ваша корзина пока что пуста, но это легко <a href="/pizzas/">исправить</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -66,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.template.context_processors.request',
                 'django.contrib.messages.context_processors.messages',
+                'myAPP.context_processor.my_lille_pony',
                 'core.context_processor.contex_core'
             ],
         },
